@@ -19,11 +19,29 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class DashboardController extends AbstractDashboardController
 {
+
+    public function __construct(
+        private CategoryRepository $categoryRepository,
+        private ProductRepository $productRepository,
+        private UserRepository $userRepository
+    ) {}
+
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
+
+        $stats = [
+            'categories' => $this->categoryRepository->count([]),
+            'products' => $this->productRepository->count([]),
+            'users' => $this->userRepository->count([])
+        ];
+
+        return $this->render('admin/dashboard.html.twig', [
+            'stats' => $stats
+        ]);
+
         //return parent::index();
-        return $this->render('admin/dashboard.html.twig');
+        //  return $this->render('admin/dashboard.html.twig');
 
         // Option 1. You can make your dashboard redirect to some common page of your backend
         //

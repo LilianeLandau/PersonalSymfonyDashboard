@@ -1,8 +1,57 @@
 {% extends '@EasyAdmin/page/content.html.twig' %}
+
 {% block content %}
-	<div class="jumbotron">
-		<h1 class="display-4">Bienvenue dans l'administration</h1>
-		<p class="lead">Gérez vos catégories, produits et utilisateurs depuis ce
-			tableau de bord.</p>
-	</div>
-{% endblock %}
+	<div class="container-fluid">
+		<div
+			class="row">
+			{# Colonne gauche : Statistiques #}
+			<div class="col-lg-8">
+				<h1 class="display-4 mb-4">Bienvenue dans l'administration</h1>
+				<p class="lead">Gérez vos catégories, produits et utilisateurs depuis ce tableau de bord.</p>
+
+				{# Statistiques en colonne unique #}
+				<div class="card mb-3">
+					<div class="card-body d-flex align-items-center">
+						<div class="col">
+							<h5 class="text-uppercase text-muted mb-0">Catégories</h5>
+							<span class="h2 font-weight-bold">{{ stats.categories }}</span>
+						</div>
+						<div class="col-auto">
+							<div class="icon icon-shape bg-gradient-primary text-white rounded-circle shadow">
+								<i class="fas fa-list"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="card mb-3">
+					<div class="card-body d-flex align-items-center">
+						<div class="col">
+							<h5 class="text-uppercase text-muted mb-0">Produits</h5>
+							<span class="h2 font-weight-bold">{{ stats.products }}</span>
+						</div>
+						<div class="col-auto">
+							<div class="icon icon-shape bg-gradient-success text-white rounded-circle shadow">
+								<i class="fas fa-tag"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="card mb-3">
+					<div class="card-body d-flex align-items-center">
+						<div class="col">
+							<h5 class="text-uppercase text-muted mb-0">Utilisateurs</h5>
+							<span class="h2 font-weight-bold">{{ stats.users }}</span>
+						</div>
+						<div class="col-auto">
+							<div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+								<i class="fas fa-users"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		{% endblock %}
