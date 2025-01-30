@@ -1,16 +1,6 @@
 {% extends '@EasyAdmin/page/content.html.twig' %}
 
-
-{% block head_javascript %}
-	{{ parent() }}
-	{{ encore_entry_script_tags('app') }}
-	<script>
-		const statsData = [{{ stats.categories }}, {{ stats.products }}, {{ stats.users }}];
-	</script>
-{% endblock %}
-
-
-{% block main %}
+{% block content %}
 	<div class="container-fluid">
 		<div
 			class="row">
@@ -62,86 +52,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<div
-			class="row mt-4">
-			{# Graphique circulaire #}
-			<div class="col-md-6">
-				<div class="card">
-					<div class="card-body">
-						<canvas id="statsChart"></canvas>
-					</div>
-				</div>
-			</div>
 
-			{# Graphique en barres #}
-			<div class="col-md-6">
-				<div class="card">
-					<div class="card-body">
-						<canvas id="statsBarChart"></canvas>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<script>
-		// Configuration du graphique circulaire
-const ctx = document.getElementById('statsChart').getContext('2d');
-new Chart(ctx, {
-type: 'pie',
-data: {
-labels: [
-'Catégories', 'Produits', 'Utilisateurs'
-],
-datasets: [
-{
-data: [
-{{ stats.categories }}, {{ stats.products }}, {{ stats.users }}
-],
-backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 205, 86)']
-}
-]
-},
-options: {
-responsive: true,
-plugins: {
-title: {
-display: true,
-text: 'Distribution des données'
-}
-}
-}
-});
-
-// Configuration du graphique en barres
-const ctxBar = document.getElementById('statsBarChart').getContext('2d');
-new Chart(ctxBar, {
-type: 'bar',
-data: {
-labels: [
-'Catégories', 'Produits', 'Utilisateurs'
-],
-datasets: [
-{
-label: 'Nombre d\'entrées',
-data: [
-{{ stats.categories }}, {{ stats.products }}, {{ stats.users }}
-],
-backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 205, 86)']
-}
-]
-},
-options: {
-responsive: true,
-plugins: {
-title: {
-display: true,
-text: 'Statistiques en barres'
-}
-}
-}
-});
-	</script>
-{% endblock %}
+		{% endblock %}

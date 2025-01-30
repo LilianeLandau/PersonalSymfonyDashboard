@@ -1,0 +1,36 @@
+{
+
+  "name": "dashboard",
+
+  "version": "1.0.0",
+
+  "private": true,
+
+  "dependencies": {
+
+    "chart.js": "^4.4.7"
+
+  },
+
+  "devDependencies": {
+
+    "@symfony/webpack-encore": "^5.0.1",
+
+    "webpack-notifier": "^1.15.0"
+
+  },
+
+  "scripts": {
+
+    "dev-server": "encore dev-server",
+
+    "dev": "encore dev",
+
+    "watch": "encore dev --watch",
+
+    "build": "encore production --progress"
+
+  }
+
+}
+
